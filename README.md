@@ -1,24 +1,4 @@
-# README
+Decisões Tomadas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Agendamentos
+Apesar da especificação separar por intervalos de 1h (uma data e um inteiro bastariam), optei por Data e Hora inicial e final para ter flexibilidade.  Lembrando que é um intervalo de inicio fechado e final aberto, ou seja, >= para inicial e < para final.
