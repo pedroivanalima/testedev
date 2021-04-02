@@ -9,3 +9,9 @@ tr:nth-child(even){
 td{
     width: 17%; /*Porque cada tr se dedica 102% :) */
 }
+
+.delete-x {
+    color: red;
+    font-weight: bold;
+    padding: 5px;
+}

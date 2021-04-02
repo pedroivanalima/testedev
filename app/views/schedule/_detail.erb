@@ -2,28 +2,27 @@
   <button type="button" class="close" data-dismiss="modal">x</button>
 </div>
 <div class="modal-body">
-  <form>
-    <div class="field">
-      Reserva de <strong name="username">?</strong>
-    </div>
-    
-    <div class="field">
-      <label>Inicio</label><br>
-      <input name="initial_time" type="datetime-local" value="">
-    </div>
+  <input hidden name="id">
+  <div class="field">
+    Reserva de <strong name="username">?</strong>
+  </div>
+  
+  <div class="field">
+    <label>Inicio</label><br>
+    <input name="initial_time" type="datetime-local" value="">
+  </div>
 
-    <div class="field">
-      <label>Fim</label><br>
-      <input name="final_time" type="datetime-local" value="">
-    </div>
-    
-    <div class="field">
-      <label>Descrição</label><br>
-      <textarea name="description">
-      </textarea>
-    </div>
-  </form>
+  <div class="field">
+    <label>Fim</label><br>
+    <input name="final_time" type="datetime-local" value="">
+  </div>
+  
+  <div class="field">
+    <label>Descrição</label><br>
+    <textarea name="description">
+    </textarea>
+  </div>
+  <input type="submit" class="btn btn-primary" onclick="detail_submit()">
 </div>
 <div class="modal-footer">
-  <input type="submit" class="btn btn-primary">
 </div>

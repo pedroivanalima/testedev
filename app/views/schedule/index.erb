@@ -17,13 +17,18 @@
         <tr>
             <td><%=hour.to_s.rjust(2, "0")%>:00</td>
             <% (1..5).each do |day| %>
-                <td>
+                <td id="td_<%=day%>_<%=hour%>">
                 <% if @schedule[day] && @schedule[day][hour] %>
-                    <div onclick="detail_schedule('<%=detail_schedule_path(@schedule[day][hour].id)%>')">
-                        Reservado para <strong><%=@schedule[day][hour].user.name%></strong>
+                    <div class="row">
+                        <div class="col" onclick="detail_schedule('<%=detail_schedule_path(@schedule[day][hour].id)%>')">
+                            Reservado para <strong><%=@schedule[day][hour].user.name%></strong>
+                        </div>
+                        <div class="delete-x col" title="Cancelar reserva" onclick="remove_schedule('<%=@schedule[day][hour].id%>');">
+                            X
+                        </div>
                     </div>
                 <% else %>
-                    <a>Disponível</a>
+                    <div onclick="detail_fulfill('', '<%=parse_initial_time(@week_begin -1.day, day, hour)%>', '<%=parse_final_time(@week_begin -1.day, day, hour)%>', '', '<%=current_user.name%>')">Disponível</div>
                 <% end %>
                 </td>
             <% end %>
