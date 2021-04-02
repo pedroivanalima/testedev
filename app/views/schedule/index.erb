@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>
+        <%= link_to "< Semana Anterior", root_path(date: @day - 7.days)%>
+        Semana de <%=@week_begin.strftime("%d/%m/%Y") %> a <%=(@week_end - 1.day).strftime("%d/%m/%Y") %>
+        <%= link_to "Próxima Semana >", root_path(date: @day + 7.days)%>
+    </h2>
+    <table>
+        <tr>
+            <th>Horário</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+        </tr>
+        <% (6..23).each do |hour| %>
+        <tr>
+            <td><%=hour.to_s.rjust(2, "0")%>:00</td>
+            <% (1..5).each do |day| %>
+                <td>
+                <% if @schedule[day] && @schedule[day][hour] %>
+                    <div onclick="detail_schedule('<%=detail_schedule_path(@schedule[day][hour].id)%>')">
+                        Reservado para <strong><%=@schedule[day][hour].user.name%></strong>
+                    </div>
+                <% else %>
+                    <a>Disponível</a>
+                <% end %>
+                </td>
+            <% end %>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"><%=render "schedule/detail"%></div>
+    </div>
+</div>

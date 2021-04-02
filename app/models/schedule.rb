@@ -2,8 +2,9 @@ class Schedule < ApplicationRecord
     belongs_to :user
 
     validates :initial_time, :final_time, :user_id, presence: true
-
     validate :overlap?
+
+    scope :week, -> (week_begin, week_end) {where("initial_time >= ? and final_time < ?", week_begin, week_end)}
     
     def overlap?
         r = Schedule.where("(? >= initial_time and ? < final_time) or (? >= initial_time and ? < final_time)", initial_time, initial_time, final_time, final_time)
@@ -13,4 +14,5 @@ class Schedule < ApplicationRecord
         end
         r
     end
+
 end

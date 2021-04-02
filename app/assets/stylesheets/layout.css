@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+tr:nth-child(even){
+    background-color: rgb(196, 225, 235);
+}
+
+td{
+    width: 17%; /*Porque cada tr se dedica 102% :) */
+}
